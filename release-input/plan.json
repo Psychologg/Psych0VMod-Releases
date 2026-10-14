@@ -1,0 +1,46 @@
+{
+  "version": "1.0.0-rc6.3",
+  "packages": [
+    {
+      "channel": "public",
+      "file": "Psych0VMod-Public-1.0.0-rc6.3.zip",
+      "sha256": "123a8790348742c987d1ffbc8b9cf75c31510b17cbc37637242d54039369758c"
+    },
+    {
+      "channel": "public",
+      "file": "Psych0Mod-Public-1.0.0-rc30.zip",
+      "sha256": "1d59bc267065d880679f7765ba47066f63f5d200b88b1a48de6b6868451ea15e"
+    },
+    {
+      "channel": "public",
+      "file": "Psych0VMod-Public-Install-1.0.0-rc6.3.zip",
+      "sha256": "d6c3e1537de659d438fa2aa1d7ca9edcb035d3349bc1723c26fb90ac7fb7c150"
+    }
+  ],
+  "speech": [
+    {
+      "version": "1.0.0",
+      "file": "Psych0VMod-Speech-pl.zip",
+      "sha256": "bc85af61ba33fc10ff4f4bb8f6044deda5ad3caa61e2576536a595232e81daf1",
+      "download_urls": [
+        "https://psych0vmod-downloads.alight-flute-0599.chatgpt.site/speech/speech-pl.0.bin",
+        "https://psych0vmod-downloads.alight-flute-0599.chatgpt.site/speech/speech-pl.1.bin",
+        "https://psych0vmod-downloads.alight-flute-0599.chatgpt.site/speech/speech-pl.2.bin",
+        "https://psych0vmod-downloads.alight-flute-0599.chatgpt.site/speech/speech-pl.3.bin",
+        "https://psych0vmod-downloads.alight-flute-0599.chatgpt.site/speech/speech-pl.4.bin",
+        "https://psych0vmod-downloads.alight-flute-0599.chatgpt.site/speech/speech-pl.5.bin"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "file": "Psych0VMod-Speech-en.zip",
+      "sha256": "c8c469889a82c709502c7d06b61e2d7db86810dbf820de31e95f9a15ec81e45d",
+      "download_urls": [
+        "https://psych0vmod-downloads.alight-flute-0599.chatgpt.site/speech/speech-en.0.bin",
+        "https://psych0vmod-downloads.alight-flute-0599.chatgpt.site/speech/speech-en.1.bin",
+        "https://psych0vmod-downloads.alight-flute-0599.chatgpt.site/speech/speech-en.2.bin",
+        "https://psych0vmod-downloads.alight-flute-0599.chatgpt.site/speech/speech-en.3.bin"
+      ]
+    }
+  ]
+}

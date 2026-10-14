@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "product": "Psych0VMod",
+  "channel": "public",
+  "version": "1.0.0-rc6.3",
+  "published_utc": "2026-10-14T16:33:14.381113+00:00",
+  "minimum_windows": "10",
+  "components": {
+    "psych0speech": {
+      "version": "1.0.0",
+      "packs": [
+        {
+          "version": "1.0.0",
+          "file": "Psych0VMod-Speech-pl.zip",
+          "sha256": "bc85af61ba33fc10ff4f4bb8f6044deda5ad3caa61e2576536a595232e81daf1",
+          "url": "https://github.com/Psychologg/Psych0VMod-Releases/releases/download/speech-v1.0.0/Psych0VMod-Speech-pl.zip"
+        },
+        {
+          "version": "1.0.0",
+          "file": "Psych0VMod-Speech-en.zip",
+          "sha256": "c8c469889a82c709502c7d06b61e2d7db86810dbf820de31e95f9a15ec81e45d",
+          "url": "https://github.com/Psychologg/Psych0VMod-Releases/releases/download/speech-v1.0.0/Psych0VMod-Speech-en.zip"
+        }
+      ]
+    },
+    "psych0vmod": {
+      "version": "1.0.0-rc6.3",
+      "file": "Psych0VMod-Public-1.0.0-rc6.3.zip",
+      "url": "https://github.com/Psychologg/Psych0VMod-Releases/releases/download/public-v1.0.0-rc6.3/Psych0VMod-Public-1.0.0-rc6.3.zip",
+      "sha256": "123a8790348742c987d1ffbc8b9cf75c31510b17cbc37637242d54039369758c"
+    },
+    "psych0mod": {
+      "version": "1.0.0-rc30",
+      "file": "Psych0Mod-Public-1.0.0-rc30.zip",
+      "url": "https://github.com/Psychologg/Psych0VMod-Releases/releases/download/public-v1.0.0-rc6.3/Psych0Mod-Public-1.0.0-rc30.zip",
+      "sha256": "1d59bc267065d880679f7765ba47066f63f5d200b88b1a48de6b6868451ea15e"
+    },
+    "full": {
+      "version": "1.0.0-rc6.3",
+      "file": "Psych0VMod-Public-Install-1.0.0-rc6.3.zip",
+      "url": "https://github.com/Psychologg/Psych0VMod-Releases/releases/download/public-v1.0.0-rc6.3/Psych0VMod-Public-Install-1.0.0-rc6.3.zip",
+      "sha256": "d6c3e1537de659d438fa2aa1d7ca9edcb035d3349bc1723c26fb90ac7fb7c150"
+    }
+  },
+  "backup_policy": {
+    "enabled": true,
+    "keep": 5,
+    "replace_oldest": true
+  },
+  "protected_paths": [
+    "mods/Psych0Mod/psych0_config.txt",
+    "%APPDATA%/Psych0VMod-Public/config.json",
+    "%APPDATA%/Psych0VMod-Public/macros.json",
+    "%APPDATA%/Psych0VMod-Public/samples",
+    "%APPDATA%/Psych0VMod-Public/presets.json",
+    "mods/Psych0Mod/psych0_presets.json",
+    "mods/Psych0Mod/psych0_autostart_state.json",
+    "mods/saves/psych0_mission_filter.json",
+    "mods/saves/psych0_mission_filter.json.bak"
+  ],
+  "install_order": [
+    "psych0mod",
+    "psych0vmod"
+  ],
+  "release_notes": "RC6.3: GitHub Releases, osobne Public i prywatne Developer, wszystkie funkcje zachowane. Końcowy test gry i mikrofonu wymagany.",
+  "ready": false
+}

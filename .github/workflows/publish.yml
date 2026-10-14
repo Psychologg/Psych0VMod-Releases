@@ -1,0 +1,22 @@
+name: Publish verified packages
+on:
+  push:
+    branches: [main]
+    paths: ['release-input/**', 'scripts/publish.ps1', '.github/workflows/publish.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: psych0vmod-publish
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify and publish release packages
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: ./scripts/publish.ps1
