@@ -4,7 +4,7 @@ if($env:GITHUB_REPOSITORY -cne $repo){throw 'Wrong publishing repository'}
 $plan=Get-Content release-input/plan.json -Raw | ConvertFrom-Json
 $output=Join-Path $env:RUNNER_TEMP 'Psych0VMod-publish'
 [void](New-Item -ItemType Directory -Path $output -Force)
-function Gh([string[]]$Arguments){
+function Invoke-Psych0Gh([string[]]$Arguments){
     $result=& gh @Arguments
     if($LASTEXITCODE -ne 0){throw ('GitHub command failed: '+$Arguments[0])}
     return $result
@@ -62,21 +62,21 @@ if($speechExists -and !($existing|ConvertFrom-Json).draft){
         VerifyHash $destination $pack.sha256
         $archive=[IO.Compression.ZipFile]::OpenRead($destination);try{if(!$archive.Entries.Count){throw 'Empty speech archive'}}finally{$archive.Dispose()}
     }
-    if(!$speechExists){[void](Gh @('release','create',$speechTag,'--repo',$repo,'--draft','--title','Vosk PL/EN — 1.0.0','--notes','Offline speech dependencies, identical SHA256-verified PL/EN packs.'))}
-    foreach($pack in $plan.speech){[void](Gh @('release','upload',$speechTag,(Join-Path $output $pack.file),'--repo',$repo,'--clobber'))}
+    if(!$speechExists){[void](Invoke-Psych0Gh @('release','create',$speechTag,'--repo',$repo,'--draft','--title','Vosk PL/EN — 1.0.0','--notes','Offline speech dependencies, identical SHA256-verified PL/EN packs.'))}
+    foreach($pack in $plan.speech){[void](Invoke-Psych0Gh @('release','upload',$speechTag,(Join-Path $output $pack.file),'--repo',$repo,'--clobber'))}
 }
 foreach($channel in @('public')){
     $tag=$channel+'-v'+$plan.version
     $release=& gh api ('repos/'+$repo+'/releases/tags/'+$tag) 2>$null
     $exists=($LASTEXITCODE -eq 0)
     if($exists -and !($release|ConvertFrom-Json).draft){throw ('Release already published: '+$tag)}
-    if(!$exists){[void](Gh @('release','create',$tag,'--repo',$repo,'--draft','--prerelease','--title',('Psych0VMod '+$channel+' '+$plan.version),'--notes-file','release-input/notes.md'))}
-    foreach($package in $plan.packages|Where-Object {$_.channel -eq $channel}){[void](Gh @('release','upload',$tag,(Join-Path 'release-input' $package.file),'--repo',$repo,'--clobber'))}
+    if(!$exists){[void](Invoke-Psych0Gh @('release','create',$tag,'--repo',$repo,'--draft','--prerelease','--title',('Psych0VMod '+$channel+' '+$plan.version),'--notes-file','release-input/notes.md'))}
+    foreach($package in $plan.packages|Where-Object {$_.channel -eq $channel}){[void](Invoke-Psych0Gh @('release','upload',$tag,(Join-Path 'release-input' $package.file),'--repo',$repo,'--clobber'))}
 }
 # Enable manifests only after all three release sets have been uploaded successfully.
-if(!$speechExists -or ($existing|ConvertFrom-Json).draft){[void](Gh @('release','edit',$speechTag,'--repo',$repo,'--draft=false'))}
+if(!$speechExists -or ($existing|ConvertFrom-Json).draft){[void](Invoke-Psych0Gh @('release','edit',$speechTag,'--repo',$repo,'--draft=false'))}
 foreach($channel in @('public')){
-    [void](Gh @('release','edit',($channel+'-v'+$plan.version),'--repo',$repo,'--draft=false','--prerelease'))
+    [void](Invoke-Psych0Gh @('release','edit',($channel+'-v'+$plan.version),'--repo',$repo,'--draft=false','--prerelease'))
     $manifest=Get-Content ('channels/'+$channel+'.json') -Raw | ConvertFrom-Json
     $manifest.ready=$true
     $manifest|ConvertTo-Json -Depth 30|Set-Content ('channels/'+$channel+'.json') -Encoding utf8NoBOM
