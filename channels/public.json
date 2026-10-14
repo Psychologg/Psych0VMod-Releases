@@ -63,5 +63,5 @@
     "psych0vmod"
   ],
   "release_notes": "RC6.3: GitHub Releases, osobne Public i prywatne Developer, wszystkie funkcje zachowane. Końcowy test gry i mikrofonu wymagany.",
-  "ready": false
+  "ready": true
 }
